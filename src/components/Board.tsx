@@ -142,6 +142,7 @@ export function Board({
 
         {game.pieces.map((piece) => {
           const isSelected = selected && samePosition(selected, piece.position)
+          const wasLastMoved = game.lastMove?.pieceId === piece.id
           const identity = piece.identity
           return (
             <button
@@ -149,11 +150,12 @@ export function Board({
               key={piece.id}
               className={`piece ${piece.revealed ? 'is-revealed' : 'is-hidden'} ${
                 identity ? `is-${identity.camp}` : ''
-              } ${isSelected ? 'is-selected' : ''}`}
+              } ${isSelected ? 'is-selected' : ''}${wasLastMoved ? ' is-last-moved' : ''}`}
               style={pointStyle(piece.position, perspective)}
               aria-label={pieceLabel(piece)}
               data-piece-id={piece.id}
               data-revealed={piece.revealed ? 'true' : 'false'}
+              data-last-moved={wasLastMoved ? 'true' : undefined}
               onClick={() => onCellClick(piece.position)}
               onDoubleClick={() => onPieceDoubleClick?.(piece.position)}
             >
@@ -165,6 +167,7 @@ export function Board({
                 </span>
                 <HiddenPieceBack className="piece-face piece-back" />
               </span>
+              {wasLastMoved && <span className="piece-last-move-marker" aria-hidden="true" />}
             </button>
           )
         })}

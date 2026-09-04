@@ -325,6 +325,28 @@ button:focus-visible {
   animation: selected-breathe 1.4s ease-in-out infinite;
 }
 
+.piece-last-move-marker {
+  position: absolute;
+  right: -6%;
+  bottom: -6%;
+  z-index: 9;
+  width: 22%;
+  min-width: 6px;
+  aspect-ratio: 1;
+  pointer-events: none;
+  border: 1px solid rgba(247, 216, 157, .92);
+  border-radius: 50%;
+  background:
+    radial-gradient(circle at 36% 32%, rgba(255, 224, 158, .9) 0 15%, transparent 18%),
+    radial-gradient(circle, #bd4938 0 57%, #79271f 60% 100%);
+  box-shadow: 0 1px 4px rgba(45, 15, 9, .72), 0 0 0 1px rgba(101, 32, 24, .48);
+  animation: last-piece-mark-in 180ms ease-out both;
+}
+
+@keyframes last-piece-mark-in {
+  from { opacity: 0; transform: scale(.45); }
+}
+
 @keyframes selected-breathe {
   50% { transform: scale(1.055); }
 }

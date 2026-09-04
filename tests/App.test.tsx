@@ -264,6 +264,8 @@ describe('App', () => {
     expect(captureCell).toHaveClass('is-capture')
     expect(captureCell?.querySelector('.move-hint.capture')).toBeInTheDocument()
     expect(captureCell?.querySelector('.last-move-marker')).not.toBeInTheDocument()
+    expect(document.querySelector('[data-piece-id="target"]')).toHaveAttribute('data-last-moved', 'true')
+    expect(document.querySelector('[data-piece-id="target"] .piece-last-move-marker')).toBeInTheDocument()
     expect(screen.getByRole('alert')).toHaveTextContent('移动将会送将')
     expect(screen.queryByText('不可落子')).not.toBeInTheDocument()
 
@@ -278,5 +280,6 @@ describe('App', () => {
     expect(document.querySelector('[data-cell="0,0"]')).not.toHaveClass('is-capture')
     expect(document.querySelector('.move-hint')).not.toBeInTheDocument()
     expect(document.querySelector('.last-move-marker')).not.toBeInTheDocument()
+    expect(document.querySelector('.piece-last-move-marker')).toBeInTheDocument()
   })
 })
