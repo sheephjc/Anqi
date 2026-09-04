@@ -1,0 +1,17 @@
+node_modules
+dist
+server-dist
+server-standalone
+playwright-report
+test-results
+output
+.playwright-cli
+coverage
+*.zip
+DEPLOY-NODE22.md
+start-anqi.cmd
+.env
+.env.*
+!.env.example
+*.tsbuildinfo
+.DS_Store
